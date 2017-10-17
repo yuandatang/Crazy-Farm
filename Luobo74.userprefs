@@ -1,0 +1,22 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Game/Scripts/Application/2.View/Spawner.cs">
+    <Files>
+      <File FileName="Assets/Editor/MapEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/Objects/Bottle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/2.View/Spawner.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/Objects/Map.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/Consts.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/Data/Level.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/1.Model/GameModel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/2.View/UIStart.cs" Line="1" Column="1" />
+      <File FileName="Assets/Game/Scripts/Application/Game.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/tyd/Desktop/526test/Luobo74/Assets/Game/Scripts/Application/Game.cs" line="47" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
