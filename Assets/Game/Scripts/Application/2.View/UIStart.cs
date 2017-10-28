@@ -10,7 +10,7 @@ public class UIStart : View
 
     public void GotoSelect()
     {
-        Game.Instance.LoadScene(2);
+		Game.Instance.LoadScene(2);
     }
 
     public override void HandleEvent(string eventName, object data)

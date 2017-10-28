@@ -19,10 +19,13 @@ class EnterSceneComand : Controller
             case 1://Start
                 RegisterView(GameObject.Find("UIStart").GetComponent<UIStart>());
                 break;
-            case 2://Select
+		    case 2:// animation
+				RegisterView(GameObject.Find("UIDialog").GetComponent<UIDialog>());
+				break;
+            case 3://Select
                 RegisterView(GameObject.Find("UISelect").GetComponent<UISelect>());
                 break;
-            case 3://Level
+            case 4://Level
                 RegisterView(GameObject.Find("Map").GetComponent<Spawner>());
                 RegisterView(GameObject.Find("TowerPopup").GetComponent<TowerPopup>());
                 RegisterView(GameObject.Find("Canvas").transform.Find("UIBoard").GetComponent<UIBoard>());
@@ -31,7 +34,7 @@ class EnterSceneComand : Controller
                 RegisterView(GameObject.Find("Canvas").transform.Find("UILost").GetComponent<UILost>());
                 RegisterView(GameObject.Find("Canvas").transform.Find("UISystem").GetComponent<UISystem>());
                 break;
-            case 4://Complete
+            case 5://Complete
                 RegisterView(GameObject.Find("UIComplete").GetComponent<UIComplete>());
                 break;
             default:

@@ -78,7 +78,7 @@ public class UICountDown : View
         {
             case Consts.E_EnterScene:
                 SceneArgs e = (SceneArgs)data;
-                if (e.SceneIndex == 3)
+                if (e.SceneIndex == 4)
                 {
                     StartCountDown();
                 }

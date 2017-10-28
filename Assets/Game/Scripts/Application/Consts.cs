@@ -32,10 +32,12 @@ public static class Consts
     public const string V_Complete = "V_Complete";
     public const string V_Spanwner = "V_Spanwner";
     public const string V_TowerPopup = "V_TowerPopup";
+	public const string V_Dialog = "V_Dialog";
     
     
     //Controller
     public const string E_StartUp = "E_StartUp";
+	public const string E_Dialog = "E_Dialog";
 
     public const string E_EnterScene = "E_EnterScene"; //SceneArgs
     public const string E_ExitScene = "E_ExitScene";//SceneArgs

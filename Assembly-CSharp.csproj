@@ -64,6 +64,7 @@
      <Compile Include="Assets\Game\Scripts\Application\2.View\UICard.cs" />
      <Compile Include="Assets\Game\Scripts\Application\2.View\UIComplete.cs" />
      <Compile Include="Assets\Game\Scripts\Application\2.View\UICountDown.cs" />
+     <Compile Include="Assets\Game\Scripts\Application\2.View\UIDialog.cs" />
      <Compile Include="Assets\Game\Scripts\Application\2.View\UILost.cs" />
      <Compile Include="Assets\Game\Scripts\Application\2.View\UISelect.cs" />
      <Compile Include="Assets\Game\Scripts\Application\2.View\UIStart.cs" />

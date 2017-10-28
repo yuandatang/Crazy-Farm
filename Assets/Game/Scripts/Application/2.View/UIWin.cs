@@ -72,7 +72,7 @@ public class UIWin : View
 
         if (gm.PlayLevelIndex >= gm.LevelCount - 1)
         {
-            Game.Instance.LoadScene(4);
+            Game.Instance.LoadScene(5);
         }
         else
         {

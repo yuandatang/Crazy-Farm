@@ -145,7 +145,7 @@ public class UISelect : View
         {
             case Consts.E_EnterScene:
                 SceneArgs e = data as SceneArgs;
-                if (e.SceneIndex == 2)
+                if (e.SceneIndex == 3)
                 {
                     //获取模型数据
                     m_GameModel = GetModel<GameModel>();
