@@ -18,6 +18,6 @@ class StartLevelCommand : Controller
         rModel.LoadLevel(gModel.PlayLevel);
 
         //进入游戏
-        Game.Instance.LoadScene(3);
+        Game.Instance.LoadScene(4);
     }
 }

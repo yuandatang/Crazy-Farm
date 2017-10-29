@@ -86,11 +86,14 @@ public class UIDialog : View{
 			textleft.gameObject.SetActive (false);
 			textright.text = "We will see who is stronger!";
 		} else {
+			/*
 			StartLevelArgs ee = new StartLevelArgs()
 			{
 				LevelIndex = 0
 			};
 			SendEvent(Consts.E_StartLevel, ee);
+			*/
+			Game.Instance.LoadScene(3);
 		}
 	}		
 	#endregion
