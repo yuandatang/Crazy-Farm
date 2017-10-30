@@ -162,7 +162,7 @@ public class Spawner : View
         {
             case Consts.E_EnterScene:
                 SceneArgs e0 = data as SceneArgs;
-                if (e0.SceneIndex == 3)
+                if (e0.SceneIndex == 4)
                 {
                     //获取地图组件
                     m_Map = GetComponent<Map>();
