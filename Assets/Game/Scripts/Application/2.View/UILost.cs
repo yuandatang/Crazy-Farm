@@ -30,7 +30,7 @@ public class UILost : View
         this.gameObject.SetActive(true);
 
         RoundModel rm = GetModel<RoundModel>();
-        UpdateRoundInfo(rm.RoundIndex + 1, rm.RoundTotal);
+        //UpdateRoundInfo(rm.RoundIndex + 1, rm.RoundTotal);
     }
 
     public void Hide()
