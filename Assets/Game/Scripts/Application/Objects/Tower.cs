@@ -76,6 +76,7 @@ public abstract class Tower : ReusbleObject
 
     public void Load(int towerID, Tile tile,Rect mapRect)
     {
+        ID = towerID;
         TowerInfo info = Game.Instance.StaticData.GetTowerInfo(towerID);
         MaxLevel = info.MaxLevel;
         ShotRate = info.ShotRate;

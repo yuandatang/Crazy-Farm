@@ -20,9 +20,15 @@ public class Monster : Role
     Vector3[] m_Path = null; //路径拐点
     int m_PointIndex = -1; //当前拐点索引
     bool m_IsReached = false;//是否到达终点
+    int m_Price;//gold
     #endregion
 
     #region 属性
+    public int Price
+    {
+        get { return m_Price; }
+        set { m_Price = value; }
+    }
     public float MoveSpeed
     {
         get { return m_MoveSpeed; }
@@ -117,6 +123,7 @@ public class Monster : Role
         this.MaxHp = info.Hp;
         this.Hp = info.Hp;
         this.MoveSpeed = info.MoveSpeed;
+        this.Price = info.Price;
     }
 
     public override void OnUnspawn()
