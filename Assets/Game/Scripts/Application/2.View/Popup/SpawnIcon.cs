@@ -7,6 +7,7 @@ public class SpawnIcon : MonoBehaviour
     TowerInfo m_Info;
     Vector3 m_CreatePosition;
     bool m_Enough = false;
+    GameModel m_gm;
 
     void Awake()
     {
@@ -16,11 +17,11 @@ public class SpawnIcon : MonoBehaviour
     public void Load(GameModel gm, TowerInfo info, Vector3 createPostion, bool upSide)
     {
         m_Info = info;
-
+        m_gm = gm;
         m_CreatePosition = createPostion;
 
         //是否足够
-        m_Enough = gm.Gold > info.BasePrice;
+        m_Enough = gm.Gold >= info.BasePrice;
 
         //图标
         string path = "Res/Roles/" + (m_Enough ? info.NormalIcon : info.DisabledIcon);
@@ -34,8 +35,8 @@ public class SpawnIcon : MonoBehaviour
 
     void OnMouseDown()
     {
-        //if (!m_Enough)
-        //return;
+        if (!m_Enough)
+        return;
 
         SpawnTowerArgs e = new SpawnTowerArgs()
         {

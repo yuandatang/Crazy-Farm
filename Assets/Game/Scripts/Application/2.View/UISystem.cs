@@ -32,30 +32,49 @@ public class UISystem : View
     {
         this.gameObject.SetActive(false);
     }
+
+    public override void RegisterEvents()
+    {
+        this.AttentionEvents.Add(Consts.E_ShowSystem);
+    }
+
     #endregion
 
     #region Unity回调
     #endregion
-
     #region 事件回调
+
     public override void HandleEvent(string eventName, object data)
     {
-
+        switch (eventName)
+        {
+            case Consts.E_ShowSystem:
+                Show();
+                break;
+        }
     }
 
     public void OnResumeClick()
     {
-
+        Time.timeScale = 1;
+        Hide();
     }
 
     public void OnRestartClick()
     {
+        Time.timeScale = 1;
+        GameModel gm = GetModel<GameModel>();
 
+        StartLevelArgs e = new StartLevelArgs() { LevelIndex = gm.PlayLevelIndex };
+        SendEvent(Consts.E_StartLevel, e);
+        Hide();
     }
 
     public void OnSelectClick()
     {
-
+        Time.timeScale = 1;
+        Game.Instance.LoadScene(3);
+        Hide();
     }
     #endregion
 

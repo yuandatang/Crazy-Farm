@@ -21,6 +21,7 @@ public class UIBoard : View
     public Button btnResume;
     public Button btnPause;
     public Button btnSystem;
+    GameModel gModel;
 
     bool m_IsPlaying = false;
     GameSpeed m_Speed = GameSpeed.One;
@@ -52,6 +53,8 @@ public class UIBoard : View
 
             imgRoundInfo.gameObject.SetActive(value);
             imgPauseInfo.gameObject.SetActive(!value);
+            btnResume.gameObject.SetActive(!value);
+            btnPause.gameObject.SetActive(value);
         }
     }
 
@@ -68,6 +71,7 @@ public class UIBoard : View
     }
     #endregion
 
+
     #region 方法
     public void UpdateRoundInfo(int currentRound, int totalRound)
     {
@@ -79,36 +83,45 @@ public class UIBoard : View
     #region Unity回调
     void Awake()
     {
-        this.Score = 0;
+        this.Score = 500;
         this.IsPlaying = true;
         this.Speed = GameSpeed.One;
+        gModel = GetModel<GameModel>();
+        gModel.Gold = this.Score;
     }
     #endregion
-
+    private void Update()
+    {
+        this.Score = gModel.Gold;
+    }
     #region 事件回调
     public void OnSpeed1Click()
     {
-        Speed = GameSpeed.One;
+        Speed = GameSpeed.Two;
+        Time.timeScale *= 2;
     }
 
     public void OnSpeed2Click()
     {
-        Speed = GameSpeed.Two;
+        Speed = GameSpeed.One;
+        Time.timeScale = 1;
     }
 
     public void OnPauseClick()
     {
         IsPlaying = false;
+        Time.timeScale = 0;
     }
 
     public void OnResumeClick()
     {
         IsPlaying = true;
+        Time.timeScale = 1;
     }
 
     public void OnSystemClick()
     {
-
+        SendEvent(Consts.E_ShowSystem);
     }
 
     public override void RegisterEvents()

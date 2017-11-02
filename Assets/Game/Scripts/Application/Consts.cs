@@ -46,6 +46,7 @@ public static class Consts
     public const string E_EndLevel = "E_EndLevel";//EndLevelArgs
 
     public const string E_CountDownComplete = "E_CountDownComplete";
+    public const string E_ShowSystem = "E_ShowSystem";
 
     public const string E_StartRound = "E_StartRound";//StartRoundArgs
     public const string E_SpawnMonster = "E_SpawnMonster";//SpawnMonsterArgs
