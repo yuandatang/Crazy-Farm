@@ -30,25 +30,26 @@ public class UIWin : View
         this.gameObject.SetActive(true);
 
         RoundModel rm = GetModel<RoundModel>();
-        UpdateRoundInfo(rm.RoundIndex + 1, rm.RoundTotal);
+        //UpdateRoundInfo(rm.RoundIndex + 1, rm.RoundTotal);
     }
 
     public void Hide()
     {
         this.gameObject.SetActive(false);
     }
-
+	/*
     public void UpdateRoundInfo(int currentRound, int totalRound)
     {
         txtCurrent.text = currentRound.ToString("D2");
         txtTotal.text = totalRound.ToString();
     }
+    */
     #endregion
 
     #region Unity回调
     void Awake()
     {
-        UpdateRoundInfo(0, 0);
+        //UpdateRoundInfo(0, 0);
     }
     #endregion
 
