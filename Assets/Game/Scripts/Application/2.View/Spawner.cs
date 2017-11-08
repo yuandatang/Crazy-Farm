@@ -47,7 +47,6 @@ public class Spawner : View
 
     void SpawnTower(Vector3 position, int towerID)
     {
-        Debug.Log(towerID.ToString());
         //找到Tile
         Tile tile = m_Map.GetTile(position);
 
@@ -61,7 +60,6 @@ public class Spawner : View
         tower.Load(towerID, tile, m_Map.MapRect);
         gm.Gold -= tower.BasePrice;
         //设置Tile数据
-        Debug.Log(tower.ID.ToString());
         tile.Data = tower;
     }
 
@@ -79,7 +77,6 @@ public class Spawner : View
         GameModel gm = GetModel<GameModel>();
         Monster mon = (Monster)monster;
         gm.Gold += mon.Price;
-        Debug.Log(mon.Price);
         GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
         if (monsters.Length == 0        //场景里没有怪物了
             && !m_Luobo.IsDead          //萝卜还活着
