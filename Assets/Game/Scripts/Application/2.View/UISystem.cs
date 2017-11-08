@@ -65,9 +65,9 @@ public class UISystem : View
         Time.timeScale = 1;
         GameModel gm = GetModel<GameModel>();
 
-        StartLevelArgs e = new StartLevelArgs() { LevelIndex = gm.PlayLevelIndex };
+        StartLevelArgs e = new StartLevelArgs();
+        e.LevelIndex = gm.PlayLevelIndex;
         SendEvent(Consts.E_StartLevel, e);
-        Hide();
     }
 
     public void OnSelectClick()

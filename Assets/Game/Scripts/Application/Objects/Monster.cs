@@ -8,6 +8,7 @@ public class Monster : Role
 {
     #region 常量
     public const float CLOSED_DISTANCE = 0.1f;
+    float slowdownrate = 0.2f;
     #endregion
 
     #region 事件
@@ -21,6 +22,9 @@ public class Monster : Role
     int m_PointIndex = -1; //当前拐点索引
     bool m_IsReached = false;//是否到达终点
     int m_Price;//gold
+    float T = 0;
+    bool slowdown = false;
+    GameObject slow;
     #endregion
 
     #region 属性
@@ -34,9 +38,30 @@ public class Monster : Role
         get { return m_MoveSpeed; }
         set { m_MoveSpeed = value; }
     }
+
     #endregion
 
     #region 方法
+    //放慢速度
+    public void Slowdown()
+    {
+        if (this.slowdown)
+        {
+            T = Time.time;
+            return;
+        }
+            
+
+        this.slow = Game.Instance.ObjectPool.Spawn("Slowdebuff");
+        Vector3 pos1 = transform.position;
+        pos1.y = pos1.y - 0.2f;
+        slow.transform.position = pos1;
+        this.MoveSpeed = this.MoveSpeed * this.slowdownrate;
+        T = Time.time;
+        this.slowdown = true;
+
+    }
+
     public void Load(Vector3[] path)
     {
         m_Path = path;
@@ -86,6 +111,22 @@ public class Monster : Role
         //计算距离
         float dis = Vector3.Distance(pos, dest);
 
+
+        if (this.slow == true && this.slow.activeSelf)
+        {   
+            Vector3 pos1 = transform.position;
+            pos1.y = pos1.y - 0.2f;
+            this.slow.transform.position = pos1;
+       }
+
+        if (this.slowdown && (Time.time - T) >= 3.0f)
+        {
+            Game.Instance.ObjectPool.Unspawn(slow);
+            this.MoveSpeed = this.MoveSpeed / this.slowdownrate;
+            this.slowdown = false;
+
+        }
+
         if (dis <= CLOSED_DISTANCE)
         {
             //到达拐点
@@ -124,12 +165,18 @@ public class Monster : Role
         this.Hp = info.Hp;
         this.MoveSpeed = info.MoveSpeed;
         this.Price = info.Price;
+        this.slowdown = false;
     }
 
     public override void OnUnspawn()
     {
         base.OnUnspawn();
 
+       if (this.slowdown)
+       {
+            Game.Instance.ObjectPool.Unspawn(this.slow);
+        }
+        this.slow = null;
         this.m_Path = null;
         this.m_PointIndex = -1;
         this.m_IsReached = false;

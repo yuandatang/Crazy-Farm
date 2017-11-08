@@ -19,7 +19,6 @@ public class SpawnIcon : MonoBehaviour
         m_Info = info;
         m_gm = gm;
         m_CreatePosition = createPostion;
-
         //是否足够
         m_Enough = gm.Gold >= info.BasePrice;
 
@@ -37,6 +36,7 @@ public class SpawnIcon : MonoBehaviour
     {
         if (!m_Enough)
         return;
+        Debug.Log(m_Info.ID);
 
         SpawnTowerArgs e = new SpawnTowerArgs()
         {

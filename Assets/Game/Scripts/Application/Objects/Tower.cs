@@ -60,7 +60,10 @@ public abstract class Tower : ReusbleObject
             }
 
             //朝向目标
-            LookAt(m_Target);
+            if (this.ID != 2)
+            {
+                LookAt(m_Target);
+            }
 
             //发射判断
             if (Time.time >= m_LastShotTime + 1f / ShotRate)

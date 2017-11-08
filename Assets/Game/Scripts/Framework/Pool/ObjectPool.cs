@@ -51,7 +51,6 @@ public class ObjectPool : Singleton<ObjectPool>
             path = name;
         else
             path = ResourceDir + "/" + name;
-
         //加载预设
         GameObject prefab = Resources.Load<GameObject>(path);
 

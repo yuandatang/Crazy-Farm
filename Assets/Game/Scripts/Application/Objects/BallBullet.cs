@@ -45,7 +45,6 @@ public class BallBullet : Bullet
             {
                 //敌人受伤
                 Target.Damage(this.Attack);
-
                 //爆炸
                 Explode();
             }
