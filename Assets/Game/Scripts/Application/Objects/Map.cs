@@ -20,8 +20,8 @@ public class TileClickEventArgs : EventArgs
 public class Map : MonoBehaviour
 {
     #region 常量
-    public const int RowCount 		= 8;  //行数
-    public const int ColumnCount 	= 12; //列数
+    public const int RowCount 		= 24;  //行数
+    public const int ColumnCount 	= 19; //列数
     #endregion
 
     #region 事件
