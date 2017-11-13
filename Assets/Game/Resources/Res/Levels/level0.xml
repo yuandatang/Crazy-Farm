@@ -99,19 +99,21 @@
 	</Holder>
 	<Path>
 		<Point X="6" Y="23" />
-		<Point X="6" Y="12" />
-		<Point X="11" Y="12" />
-		<Point X="11" Y="10" />
-		<Point X="13" Y="10" />
-		<Point X="13" Y="5" />
-		<Point X="11" Y="5" />
-		<Point X="11" Y="3" />
-		<Point X="8" Y="3" />
+		<Point X="6" Y="13" />
+		<Point X="12" Y="13" />
+		<Point X="12" Y="12" />
+		<Point X="14" Y="12" />
+		<Point X="14" Y="7" />
+		<Point X="12" Y="7" />
+		<Point X="12" Y="5" />
 		<Point X="8" Y="5" />
-		<Point X="5" Y="5" />
+		<Point X="8" Y="7" />
+		<Point X="5" Y="7" />
 		<Point X="5" Y="1" />
 	</Path>
 	<Rounds>
 		<Round Monster="0" Count="10" />
+		<Round Monster="1" Count="10" />
+		<Round Monster="2" Count="10" />
 	</Rounds>
 </Level>

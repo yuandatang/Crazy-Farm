@@ -5,8 +5,9 @@ using System.Collections.Generic;
 public class RoundModel : Model
 {
     #region 常量
-    public const float ROUND_INTERVAL = 3f; //回合间隔时间
+    public const float ROUND_INTERVAL = 10f; //回合间隔时间
     public const float SPAWN_INTERVAL = 1f; //出怪间隔时间
+   
     #endregion
 
     #region 事件
@@ -56,6 +57,11 @@ public class RoundModel : Model
     public void StopRound()
     {
         Game.Instance.StopCoroutine(m_Coroutine);
+    }
+
+    public void setComplete(bool isComplete)
+    {
+        m_AllRoundsComplete = isComplete;
     }
 
     IEnumerator RunRound()

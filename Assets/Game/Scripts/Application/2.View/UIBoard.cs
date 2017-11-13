@@ -21,7 +21,7 @@ public class UIBoard : View
     public Button btnResume;
     public Button btnPause;
     public Button btnSystem;
-    GameModel gModel;
+    public GameModel gModel;
 
     bool m_IsPlaying = false;
     GameSpeed m_Speed = GameSpeed.One;
@@ -92,6 +92,7 @@ public class UIBoard : View
     #endregion
     private void Update()
     {
+        gModel = GetModel<GameModel>();
         this.Score = gModel.Gold;
     }
     #region 事件回调

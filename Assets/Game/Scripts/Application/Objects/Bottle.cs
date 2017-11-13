@@ -19,5 +19,8 @@ public class Bottle : Tower
         BallBullet bullet = go.GetComponent<BallBullet>();
         bullet.transform.position = m_ShotPoint.position;
         bullet.Load(this.UseBulletID, this.Level, this.MapRect, monster);
+        // Add sound when the bottle shot
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.PlayOneShot(audioSource.clip);
     }
 }

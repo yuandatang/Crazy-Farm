@@ -64,10 +64,20 @@ public class UISystem : View
     {
         Time.timeScale = 1;
         GameModel gm = GetModel<GameModel>();
-
+        
         StartLevelArgs e = new StartLevelArgs();
         e.LevelIndex = gm.PlayLevelIndex;
+
+        // restart后清空上一次的round信息，停止原来round
+        RoundModel rm = GetModel<RoundModel>();
+        rm.setComplete(true);
+        rm.StopRound();
         SendEvent(Consts.E_StartLevel, e);
+        //gm.StartLevel(e.LevelIndex);
+
+        //Debug.Log("Restart, round:" + rModel.RoundIndex);
+
+        //Game.Instance.LoadScene(4);
     }
 
     public void OnSelectClick()

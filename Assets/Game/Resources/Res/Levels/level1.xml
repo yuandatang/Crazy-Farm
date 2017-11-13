@@ -94,5 +94,7 @@
 	</Path>
 	<Rounds>
 		<Round Monster="1" Count="10" />
+		<Round Monster="3" Count="10" />
+		<Round Monster="4" Count="10" />
 	</Rounds>
 </Level>

@@ -75,13 +75,15 @@
 		<Point X="5" Y="11" />
 	</Holder>
 	<Path>
-		<Point X="13" Y="23" />
-		<Point X="13" Y="5" />
-		<Point X="6" Y="5" />
+		<Point X="14" Y="23" />
+		<Point X="14" Y="4" />
+		<Point X="7" Y="4" />
+		<Point X="7" Y="12" />
 		<Point X="6" Y="12" />
-		<Point X="5" Y="12" />
 	</Path>
 	<Rounds>
 		<Round Monster="2" Count="10" />
+		<Round Monster="4" Count="10" />
+		<Round Monster="5" Count="10" />
 	</Rounds>
 </Level>
