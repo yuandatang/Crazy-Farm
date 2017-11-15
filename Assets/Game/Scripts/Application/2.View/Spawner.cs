@@ -42,6 +42,7 @@ public class Spawner : View
         monster.Reached += monster_Reached;
         monster.HpChanged += monster_HpChanged;
         monster.Dead += monster_Dead;
+        // 加载路径
         monster.Load(m_Map.Path);
     }
 
@@ -61,6 +62,8 @@ public class Spawner : View
         gm.Gold -= tower.BasePrice;
         //设置Tile数据
         tile.Data = tower;
+        // 如果放了一个塔，那么这个塔的位置不能再放塔了
+        tile.isTower = true;
     }
 
     void monster_HpChanged(int hp, int maxHp)
@@ -179,7 +182,7 @@ public class Spawner : View
 
                     //加载萝卜
                     Vector3[] path = m_Map.Path;
-                    Vector3 luoboPos = path[path.Length - 1];
+                    Vector3 luoboPos = m_Map.LuoboPos;
                     SpawnLuobo(luoboPos);
                 }
                 break;

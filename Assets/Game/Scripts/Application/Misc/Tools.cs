@@ -63,6 +63,14 @@ public class Tools
             level.Path.Add(p);
         }
 
+        nodes = doc.SelectNodes("/Level/Luobo/Point");
+        XmlNode nodeLuobo = nodes[0];
+
+        level.Luobo = new Point(
+            int.Parse(nodeLuobo.Attributes["X"].Value),
+            int.Parse(nodeLuobo.Attributes["Y"].Value));
+
+
         nodes = doc.SelectNodes("/Level/Rounds/Round");
         for (int i = 0; i < nodes.Count; i++)
         {

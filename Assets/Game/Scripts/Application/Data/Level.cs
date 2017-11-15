@@ -27,4 +27,6 @@ public class Level
 
     //出怪回合信息
     public List<Round> Rounds = new List<Round>();
+
+    public Point Luobo = new Point(0, 0);
 }

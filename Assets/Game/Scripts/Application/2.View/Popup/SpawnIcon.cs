@@ -8,10 +8,12 @@ public class SpawnIcon : MonoBehaviour
     Vector3 m_CreatePosition;
     bool m_Enough = false;
     GameModel m_gm;
+    Map m_map;
 
     void Awake()
     {
         m_Render = GetComponent<SpriteRenderer>();
+        m_map = GetComponent<Map>();
     }
 
     public void Load(GameModel gm, TowerInfo info, Vector3 createPostion, bool upSide)
@@ -38,6 +40,7 @@ public class SpawnIcon : MonoBehaviour
         return;
         Debug.Log(m_Info.ID);
 
+        
         SpawnTowerArgs e = new SpawnTowerArgs()
         {
             Position = m_CreatePosition,
