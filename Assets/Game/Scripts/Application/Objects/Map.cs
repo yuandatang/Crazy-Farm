@@ -154,6 +154,9 @@ public class Map : MonoBehaviour
             Tile t = GetTile(p.X, p.Y);
             m_road.Add(t);
             t.CanHold = false;
+			if (i == level.Path.Count) {
+				t.isCarrot = true;
+			}
         }
 
         Point luobop = level.Luobo;

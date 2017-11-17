@@ -31,6 +31,7 @@ public class TowerPopup : View
     #region 字段
     public SpawnPanel CreatePanel;
     public UpgradePanel UpgradePanel;
+	public HeroPanel HeroPanel;
     #endregion
 
     #region 属性
@@ -72,11 +73,19 @@ public class TowerPopup : View
         GameModel gm = GetModel<GameModel>();
         UpgradePanel.Show(gm, tower);
     }
+	public void ShowHeroPanel(Vector3 position)
+	{
+		HideAllPanels();
+
+		GameModel gm = GetModel<GameModel>();
+		HeroPanel.Show(gm, position);
+	}
 
     public void HideAllPanels()
     {
         CreatePanel.Hide();
         UpgradePanel.Hide();   
+		HeroPanel.Hide ();
     }
 
     public override void RegisterEvents()
@@ -98,6 +107,10 @@ public class TowerPopup : View
                 ShowUpgradeArgs e2 = data as ShowUpgradeArgs;
                 ShowUpgradePanel(e2.Tower);
                 break;
+//			case Consts.E_ShowHero:
+//				ShowHeroArgs e3 = data as ShowHeroArgs;
+//				ShowHeroPanel(e3.Position);
+//				break;
             case Consts.E_HidePopup:
                 HideAllPanels();
                 break;
