@@ -19,7 +19,6 @@ public class Monster : Role
     public MonsterType MonsterType = MonsterType.Monster0;//怪物类型
     float m_MoveSpeed;//移动速度（米/秒）
     Vector3[] m_Path = null; //路径拐点
-    List<Vector3> final_Path = null; // 最终A*算法后的路径
     int m_PointIndex = -1; //当前拐点索引
     bool m_IsReached = false;//是否到达终点
     int m_Price;//gold
@@ -113,51 +112,6 @@ public class Monster : Role
         float dis = Vector3.Distance(pos, dest);
 
         
-        /* 利用A*算法寻路
-        List<Tile> curPath = new List<Tile>();
-        int x = (int)pos.x;
-        int y = (int)pos.y;
-        Tile start = new Tile(x, y);
-        x = (int)dest.x;
-        y = (int)dest.y;
-        Tile end = new Tile(x, y);
-        curPath = PathFind.FindPath(start, end);
-        m_map = GetComponent<Map>();
-        for (int j = 0; j < curPath.Count; j++)
-        {
-            pos = m_map.GetPosition(curPath[j]);
-            dest = m_map.GetPosition(curPath[j + 1]);
-            Debug.Log(pos.x + "," + pos.y);
-            Debug.Log(dest.x + "," + dest.y);
-            dis = Vector3.Distance(pos, dest);
-            if (dis <= CLOSED_DISTANCE)
-            {
-                //到达拐点
-                MoveTo(dest);
-
-                if (HasNext())
-                    MoveNext();
-                else
-                {
-                    //到达终点
-                    m_IsReached = true;
-
-                    //触发到达终点事件
-                    if (Reached != null)
-                        Reached(this);
-                }
-            }
-            else
-            {
-                //移动的单位方向
-                Vector3 direction = (dest - pos).normalized;
-
-                //帧移动(米/帧 =  米/秒  * Time.deltaTime)
-                transform.Translate(direction * m_MoveSpeed * Time.deltaTime);
-            }
-        }
-        */
-        
         if (this.slow == true && this.slow.activeSelf)
         {   
             Vector3 pos1 = transform.position;
@@ -200,85 +154,7 @@ public class Monster : Role
         }
         
     }
-
-
-    public static List<Tile> FindPath(Tile start, Tile end)
-    {
-        Debug.Log("i'm in pathfinding");
-
-        List<Tile> open = new List<Tile>();
-        List<Tile> close = new List<Tile>();
-        List<Tile> paths = new List<Tile>();
-        open.Add(start);
-
-        while (open.Count > 0)
-        {
-
-            close.Add(open[0]);
-            Tile pendingTile = open[0];
-            open.RemoveAt(0);
-
-            for (int i = 0; i < pendingTile.Count; i++)
-            {
-                Tile current = pendingTile[i];
-                if (current == null || current.Equals(start) || !current.CanHold || close.Contains(current))
-                {
-                    continue;
-                }
-                int h;
-                int g;
-                int f;
-
-                //Up Right Down Left
-                g = pendingTile.G + 10;
-                Debug.Log(current.Pos.X + "," + current.Pos.Y);
-                h = (System.Math.Abs(end.Pos.X - current.Pos.X) + System.Math.Abs(end.Pos.Y - current.Pos.Y)) * 10;
-                f = h + g;
-                if (!open.Contains(current))
-                {
-                    current.F = f;
-                    current.G = g;
-                    current.H = h;
-                    current.Parent = pendingTile;
-                    open.Add(current);
-                }
-                else
-                {
-                    if (f < current.F || current.F == 0)
-                    {
-                        current.G = g;
-                        current.H = h;
-                        current.F = f;
-                        current.Parent = pendingTile;
-                        open.Add(current);
-                    }
-                }
-
-                if (current.Equals(end))
-                {
-                    Tile path = end;
-                    while (path.Parent != null)
-                    {
-                        paths.Add(path);
-                        path = path.Parent;
-                    }
-                    paths.Reverse();
-                    open.Clear();
-                    //VisualizePath(paths);
-                    return paths;
-                }
-            }
-
-            open = open.OrderBy(item => item.F).ToList();
-        }
-        for (int i = 0; i < paths.Count; i++)
-        {
-            Debug.Log(paths[i].X + "," + paths[i].Y);
-        }
-        return paths;
-
-    }
-
+    
     #endregion
 
     #region 事件回调

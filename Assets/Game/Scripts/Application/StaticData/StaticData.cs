@@ -31,14 +31,14 @@ public class StaticData : Singleton<StaticData>
         m_Monsters.Add(2, new MonsterInfo() { ID = 2, Hp = 15, MoveSpeed = 1.5f, Price = 30 });
         m_Monsters.Add(3, new MonsterInfo() { ID = 3, Hp = 20, MoveSpeed = 1.5f, Price = 40 });
         m_Monsters.Add(4, new MonsterInfo() { ID = 4, Hp = 20, MoveSpeed = 1.5f, Price = 40 });
-        m_Monsters.Add(5, new MonsterInfo() { ID = 5, Hp = 25, MoveSpeed = 0.5f, Price = 50 });
+        m_Monsters.Add(5, new MonsterInfo() { ID = 5, Hp = 25, MoveSpeed = 0.8f, Price = 50 });
     }
 
     void InitTowers()
     {
         m_Towers.Add(0, new TowerInfo() { ID = 0, PrefabName = "Bottle", NormalIcon = "Bottle/Bottle01", DisabledIcon = "Bottle/Bottle00", MaxLevel = 3, BasePrice = 100, ShotRate = 2,    GuardRange = 3f, UseBulletID = 0 });
         m_Towers.Add(1, new TowerInfo() { ID = 1, PrefabName = "Fan",    NormalIcon = "Fan/Fan01",       DisabledIcon = "Fan/Fan00",       MaxLevel = 3, BasePrice = 160, ShotRate = 0.3f, GuardRange = 5f, UseBulletID = 1 });
-        m_Towers.Add(2, new TowerInfo() { ID = 2, PrefabName = "Slowdown", NormalIcon = "Bottle/Bottle01", DisabledIcon = "Bottle/Bottle00", MaxLevel = 3, BasePrice = 130, ShotRate = 0.5f, GuardRange = 3f, UseBulletID = 0 });
+        m_Towers.Add(2, new TowerInfo() { ID = 2, PrefabName = "Slowdown", NormalIcon = "Slow/Slow01", DisabledIcon = "Slow/Slow00", MaxLevel = 3, BasePrice = 130, ShotRate = 0.5f, GuardRange = 3f, UseBulletID = 0 });
     }
 
     void InitBullets()

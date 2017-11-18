@@ -41,7 +41,6 @@ public class Map : MonoBehaviour
     List<Tile> m_grid = new List<Tile>(); //格子集合
     List<Tile> m_road = new List<Tile>(); //路径集合
     Tile Luobo = new Tile(0, 0); //萝卜位置
-    List<Tile> m_final_path = new List<Tile>();
 
     public bool DrawGizmos = true; //是否绘制网格
     #endregion
@@ -96,24 +95,11 @@ public class Map : MonoBehaviour
     {
         get
         {
-            /* List<Vector3> m_path = new List<Vector3>();
-             for (int i = 0; i < m_road.Count-1; i++)
-             {
-                 // 利用A*算法寻路
-                 List<Tile> curPath = new List<Tile>();
-                 Tile start = m_road[i];
-                 Tile end = m_road[i + 1];
-                 curPath = PathFind.FindPath(start, end);
-                 for(int j=0; j<curPath.Count; j++)
-                 {
-                     m_path.Add(GetPosition(curPath[j]));
-                 }
-
-             }*/
+            
             List<Vector3> m_path = new List<Vector3>();
-            for (int i = 0; i < m_final_path.Count; i++)
+            for (int i = 0; i < m_road.Count; i++)
             {
-                Tile t = m_final_path[i];
+                Tile t = m_road[i];
                 Vector3 point = GetPosition(t);
                 m_path.Add(point);
             }
@@ -154,9 +140,6 @@ public class Map : MonoBehaviour
             Tile t = GetTile(p.X, p.Y);
             m_road.Add(t);
             t.CanHold = false;
-			if (i == level.Path.Count) {
-				t.isCarrot = true;
-			}
         }
 
         Point luobop = level.Luobo;
@@ -218,43 +201,6 @@ public class Map : MonoBehaviour
 
     void Update()
     {
-        List<Vector3> m_path = new List<Vector3>();
-        List<Tile> final_Path = new List<Tile>();
-        for (int i = 0; i < m_road.Count; i++)
-        {
-            Tile t = m_road[i];
-            Vector3 point = GetPosition(t);
-            m_path.Add(point);
-        }
-        Vector3[] m_Path = m_path.ToArray();
-        //当前位置
-        for (int pointIndex = 0; pointIndex < m_road.Count - 1; pointIndex++)
-        {
-            Vector3 pos = GetPosition(m_road[pointIndex]);
-            //目标位置
-            Vector3 dest = GetPosition(m_road[pointIndex + 1]);
-            //计算距离
-            float dis = Vector3.Distance(pos, dest);
-            final_Path.Add(GetTile(pos));
-
-            // 利用A*算法寻路
-            int x = (int)pos.x;
-            int y = (int)pos.y;
-            Tile start = new Tile(x, y);
-            x = (int)dest.x;
-            y = (int)dest.y;
-            Tile end = new Tile(x, y);
-            List<Tile> curPath = FindPath(start, end);
-            Map m_map = GetComponent<Map>();
-            for (int j = 0; j < curPath.Count-1; j++)
-            {
-                pos = m_map.GetPosition(curPath[j]);
-                dest = m_map.GetPosition(curPath[j + 1]);
-                
-                final_Path.Add(curPath[j+1]);
-            }
-            m_final_path = final_Path;
-        }
         //鼠标左键检测
         if (Input.GetMouseButtonDown(0))
         {
@@ -282,84 +228,7 @@ public class Map : MonoBehaviour
         }
     }
 
-
-    public List<Tile> FindPath(Tile start, Tile end)
-    {
-
-
-        List<Tile> open = new List<Tile>();
-        List<Tile> close = new List<Tile>();
-        List<Tile> paths = new List<Tile>();
-        open.Add(start);
-  
-        while (open.Count > 0)
-        {
-
-            close.Add(open[0]);
-            Tile pendingTile = open[0];
-            open.RemoveAt(0);
-
-            for (int i = 0; i < pendingTile.Count; i++)
-            {
-                
-                
-                Tile current = pendingTile[i];
-                
-                if (current == null || current.Equals(start) || current.isTower || close.Contains(current))
-                {
-                    continue;
-                }
-                int h;
-                int g;
-                int f;
-
-                //Up Right Down Left
-                g = pendingTile.G + 10;
-                
-                h = (System.Math.Abs(end.Pos.X - current.Pos.X) + System.Math.Abs(end.Pos.Y - current.Pos.Y)) * 10;
-                f = h + g;
-                if (!open.Contains(current))
-                {
-                    current.F = f;
-                    current.G = g;
-                    current.H = h;
-                    current.Parent = pendingTile;
-                    open.Add(current);
-                }
-                else
-                {
-                    if (f < current.F || current.F == 0)
-                    {
-                        current.G = g;
-                        current.H = h;
-                        current.F = f;
-                        current.Parent = pendingTile;
-                        open.Add(current);
-                    }
-                }
-
-                if (current.Equals(end))
-                {
-                    Tile path = end;
-                    while (path.Parent != null)
-                    {
-                        paths.Add(path);
-                        path = path.Parent;
-                    }
-                    paths.Reverse();
-                    open.Clear();
-                    //VisualizePath(paths);
-                    return paths;
-                }
-            }
-
-            open = open.OrderBy(item => item.F).ToList();
-        }
-        
-        return paths;
-
-    }
-
+    
     //只在编辑器里起作用
     void OnDrawGizmos()
     {

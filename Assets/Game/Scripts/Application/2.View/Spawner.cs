@@ -131,14 +131,6 @@ public class Spawner : View
             return;
         }
 
-		if (e.Tile.isCarrot) 
-		{
-			ShowHeroArgs arg = new ShowHeroArgs () {
-				Position = m_Map.GetPosition (e.Tile)
-			};
-			SendEvent (Consts.E_ShowHero, arg);
-			return;
-		}
         if (e.Tile.Data == null)
         {
             ShowCreateArgs arg = new ShowCreateArgs()
