@@ -11,6 +11,7 @@ public class Tile
     public bool CanHold; //是否可以放置塔 isWall = !CanHold
     public object Data; //格子所保存的数据
     public bool _isTower = false;
+    public bool _isCarrot = false;
 
     public Tile(int x, int y)
     {
@@ -59,6 +60,7 @@ public class Tile
             _isWall = value;
         }
     }
+
     public bool isTower
     {
         get

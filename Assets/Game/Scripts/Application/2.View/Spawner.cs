@@ -123,32 +123,42 @@ public class Spawner : View
             SendEvent(Consts.E_HidePopup);
             return;
         }
-
-        //非放塔格子，不操作菜单
-        if (!e.Tile.CanHold)
+        if (e.Tile._isCarrot)
         {
-            SendEvent(Consts.E_HidePopup);
-            return;
-        }
-
-        if (e.Tile.Data == null)
-        {
-            ShowCreateArgs arg = new ShowCreateArgs()
+            ShowHeroArgs arg = new ShowHeroArgs()
             {
-                Position = m_Map.GetPosition(e.Tile),
-                UpSide = e.Tile.Y < Map.RowCount / 2
+                Position = m_Map.GetPosition(e.Tile)
             };
-            SendEvent(Consts.E_ShowCreate, arg);
+            SendEvent(Consts.E_ShowHero, arg);
         }
         else
         {
-            ShowUpgradeArgs arg = new ShowUpgradeArgs()
+            //非放塔格子，不操作菜单
+            if (!e.Tile.CanHold)
             {
+                SendEvent(Consts.E_HidePopup);
+                return;
+            }
 
-                Tower = e.Tile.Data as Tower
+            if (e.Tile.Data == null)
+            {
+                ShowCreateArgs arg = new ShowCreateArgs()
+                {
+                    Position = m_Map.GetPosition(e.Tile),
+                    UpSide = e.Tile.Y < Map.RowCount / 2
+                };
+                SendEvent(Consts.E_ShowCreate, arg);
+            }
+            else
+            {
+                ShowUpgradeArgs arg = new ShowUpgradeArgs()
+                {
 
-            };
-            SendEvent(Consts.E_ShowUpgrade, arg);
+                    Tower = e.Tile.Data as Tower
+
+                };
+                SendEvent(Consts.E_ShowUpgrade, arg);
+            }
         }
     }
     #endregion

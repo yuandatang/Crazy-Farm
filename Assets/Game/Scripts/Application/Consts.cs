@@ -57,6 +57,7 @@ public static class Consts
     public const string E_ShowCreate = "E_ShowCreate";//ShowCreatorArgs
     public const string E_ShowUpgrade = "E_ShowUpgrade";//ShowUpgradeArgs
     public const string E_HidePopup = "E_HidePopup";
+    public const string E_ShowHero = "E_ShowHero";
 }
 
 public enum GameSpeed
