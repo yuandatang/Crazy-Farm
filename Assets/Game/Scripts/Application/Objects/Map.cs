@@ -42,7 +42,7 @@ public class Map : MonoBehaviour
     List<Tile> m_road = new List<Tile>(); //路径集合
     Tile Luobo = new Tile(0, 0); //萝卜位置
 
-    public bool DrawGizmos = true; //是否绘制网格
+    public bool DrawGizmos = false; //是否绘制网格
     #endregion
 
     #region 属性

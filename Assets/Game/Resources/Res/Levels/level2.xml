@@ -10,8 +10,18 @@
 	</Holder>
 	<Path>
 		<Point X="8" Y="6" />
+		<Point X="8" Y="5" />
+		<Point X="8" Y="4" />
+		<Point X="8" Y="3" />
+		<Point X="8" Y="2" />
 		<Point X="8" Y="1" />
+		<Point X="7" Y="1" />
+		<Point X="6" Y="1" />
+		<Point X="5" Y="1" />
+		<Point X="4" Y="1" />
 		<Point X="3" Y="1" />
+		<Point X="3" Y="2" />
+		<Point X="3" Y="3" />
 		<Point X="3" Y="4" />
 		<Point X="2" Y="4" />
 	</Path>
