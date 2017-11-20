@@ -13,16 +13,25 @@ public class Skill1Icon : MonoBehaviour
        
   public void Load(GameModel gm, Vector3 createPostion)
   {       
-      m_gm = gm;      
+      m_gm = gm;
+        if(m_gm.Gold <20)
+        {
+            string path = "Res/Roles/Slow/snail";
+            m_Render.sprite = Resources.Load<Sprite>(path);
+              
+        }
   }       
       
   void OnMouseDown()
-  {       
-//        if (!m_gm.Dazhao) {     
-//            return;     
-//        }       
-      //点击冷冻技能        
-      
+  {
+
+        if (m_gm.Gold >= 20)
+        {
+            m_gm.Gold -= 20;
+        }
+        else{
+            return;
+        }
       GameObject[] objects = GameObject.FindGameObjectsWithTag("Monster");        
       foreach (GameObject go in objects) {        
           Monster monster = go.GetComponent<Monster>();       
