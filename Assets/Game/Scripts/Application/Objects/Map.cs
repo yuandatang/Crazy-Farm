@@ -123,15 +123,20 @@ public class Map : MonoBehaviour
         this.RoadImage = "file://" + Consts.MapDir + "/" + level.Road;
 
         //炮塔点，所有除去寻路点的点
+        // we cannot create tower on the last row, otherwise it will have bug when click the buttons.
         for (int i = 0; i < RowCount; i++)
         {
             for (int j = 0; j < ColumnCount; j++)
             {
                 Point p = new Point(j, i);
                 Tile t = GetTile(p.X, p.Y);
-                t.CanHold = true;
+                if (i != RowCount - 1)
+                {
+                    t.CanHold = true;
+                }
             }
         }
+
 
         //寻路点
         for (int i = 0; i < level.Path.Count; i++)
