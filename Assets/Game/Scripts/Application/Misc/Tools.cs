@@ -36,6 +36,7 @@ public class Tools
         level.Background = doc.SelectSingleNode("/Level/Background").InnerText;
         level.Road = doc.SelectSingleNode("/Level/Road").InnerText;
         level.InitScore = int.Parse(doc.SelectSingleNode("/Level/InitScore").InnerText);
+        
         //level.RowNum = int.Parse(doc.SelectSingleNode("/Level/RowNum").InnerText);
         //level.ColNum = int.Parse(doc.SelectSingleNode("/Level/ColNum").InnerText);
         XmlNodeList nodes;
@@ -76,6 +77,14 @@ public class Tools
             level.Rounds.Add(r);
         }
 
+        nodes = doc.SelectNodes("/Level/Luobo/Point");
+        XmlNode nodeLuobo = nodes[0];
+
+        Point pLuobo = new Point(
+            int.Parse(nodeLuobo.Attributes["X"].Value),
+            int.Parse(nodeLuobo.Attributes["Y"].Value));
+
+        level.Luobo = pLuobo;
     }
 
     //保存关卡
