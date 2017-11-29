@@ -12,7 +12,7 @@ public class Tools
     //读取关卡列表
     public static List<FileInfo> GetLevelFiles()
     {
-        string[] files = Directory.GetFiles(Application.dataPath + "/Game/Resources/Res/Levels", "*.xml");
+        string[] files = {"level0.xml","level1.xml","level2.xml"};
         //TextAsset textAsset0 = (TextAsset)Resources.Load(Consts.LevelDir + "level0");
         //TextAsset textAsset1 = (TextAsset)Resources.Load(Consts.LevelDir + "level1");
         //TextAsset textAsset2 = (TextAsset)Resources.Load(Consts.LevelDir + "level2");
