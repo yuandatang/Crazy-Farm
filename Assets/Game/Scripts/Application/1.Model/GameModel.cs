@@ -92,9 +92,11 @@ public class GameModel : Model
         
 
         //构建Level集合
+       
         List<Level> levels = new List<Level>();
+        List<FileInfo> files = Tools.GetLevelFiles();
 
-        for (int i = 0; i <= 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             Level level = new Level();
             Tools.FillLevel(i, ref level);

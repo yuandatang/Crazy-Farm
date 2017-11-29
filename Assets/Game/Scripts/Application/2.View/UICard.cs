@@ -41,7 +41,7 @@ public class UICard : MonoBehaviour, IPointerDownHandler
         m_Card = card;
 
         //加载图片
-        string cardFile = "file://" + Consts.CardDir + "\\" + m_Card.CardImage;
+        string cardFile = "file://" + Application.dataPath + "/Game/Resources/Res/Cards" + "\\" + m_Card.CardImage;
         StartCoroutine(Tools.LoadImage(cardFile, ImgCard));
 
         //是否锁定
