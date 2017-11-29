@@ -152,9 +152,10 @@ public class Map : MonoBehaviour
 
         Point luobop = level.Luobo;
         Luobo = GetTile(luobop.X, luobop.Y);
+       
 
 
-        
+
 
         /*炮塔点 除去寻路点的所有点
         for (int i = 0; i < level.Holder.Count; i++)

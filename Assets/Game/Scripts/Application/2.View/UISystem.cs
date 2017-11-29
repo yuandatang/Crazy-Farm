@@ -83,6 +83,12 @@ public class UISystem : View
     public void OnSelectClick()
     {
         Time.timeScale = 1;
+        // restart后清空上一次的round信息，停止原来round
+        RoundModel rm = GetModel<RoundModel>();
+        rm.setComplete(true);
+        rm.StopRound();
+        
+
         Game.Instance.LoadScene(3);
         Hide();
     }
