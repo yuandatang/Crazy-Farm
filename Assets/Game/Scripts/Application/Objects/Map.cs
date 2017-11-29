@@ -119,8 +119,8 @@ public class Map : MonoBehaviour
         this.m_level = level;
 
         //加载图片
-        this.BackgroundImage = "file://" + Application.dataPath + "/Game/Resources/Res/Maps" + "/" + level.Background;
-        this.RoadImage = "file://" + Application.dataPath + "/Game/Resources/Res/Maps" + "/" + level.Road;
+        this.BackgroundImage = Consts.MapDir + level.Background;
+        this.RoadImage = Consts.MapDir + level.Road;
 
         //炮塔点，所有除去寻路点的点
         // we cannot create tower on the last row, otherwise it will have bug when click the buttons.

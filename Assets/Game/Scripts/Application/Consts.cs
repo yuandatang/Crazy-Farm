@@ -8,8 +8,8 @@ public static class Consts
 {
     //目录
     public static readonly string LevelDir = @"Res/Levels/";
-    public static readonly string MapDir = @"Res/Maps/";
-    public static readonly string CardDir = @"Res/Cards/";
+    public static readonly string MapDir = @"http://www-scf.usc.edu/~jiaxison/Carrot/";
+    public static readonly string CardDir = @"http://www-scf.usc.edu/~jiaxison/Carrot/";
 
     //参数
     public const string GameProgress = "GameProgress";

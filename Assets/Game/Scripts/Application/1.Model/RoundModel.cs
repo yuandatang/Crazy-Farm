@@ -56,7 +56,12 @@ public class RoundModel : Model
 
     public void StopRound()
     {
+        if(m_Coroutine == null)
+        {
+            return;
+        }
         Game.Instance.StopCoroutine(m_Coroutine);
+        Debug.Log(m_Coroutine);
     }
 
     public void setComplete(bool isComplete)

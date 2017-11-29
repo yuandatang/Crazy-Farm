@@ -27,10 +27,10 @@
 		<Point X="8" Y="3" />
 		<Point X="8" Y="2" />
 		<Point X="8" Y="1" />
-		<Point X="8" Y="0" />
+		<Point X="8" Y="1" />
 	</Path>
 	<Luobo>
-		<Point X="8" Y="0" />
+		<Point X="8" Y="1" />
 	</Luobo>
 	<Rounds>
 		<Round Monster="1" Count="10" />
