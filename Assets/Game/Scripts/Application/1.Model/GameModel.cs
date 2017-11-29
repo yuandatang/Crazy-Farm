@@ -89,16 +89,19 @@ public class GameModel : Model
     //初始化
     public void Initialize()
     {
+        
+
         //构建Level集合
-        List<FileInfo> files = Tools.GetLevelFiles();
         List<Level> levels = new List<Level>();
-        for (int i = 0; i < files.Count; i++)
+
+        for (int i = 0; i <= 2; i++)
         {
             Level level = new Level();
-            Tools.FillLevel(files[i].FullName, ref level);
+            Tools.FillLevel(i, ref level);
             levels.Add(level);
         }
         m_Levels = levels;
+
 
         //读取游戏进度
         m_GameProgress = Saver.GetProgress();

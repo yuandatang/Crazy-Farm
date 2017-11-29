@@ -5,6 +5,8 @@
 	<Background>bg1.png</Background>
 	<Road>road1.png</Road>
 	<InitScore>10</InitScore>
+	<RowNum>7</RowNum>
+    <ColNum>12</ColNum>
 	<Holder>
 	</Holder>
 	<Path>

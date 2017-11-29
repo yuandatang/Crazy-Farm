@@ -9,35 +9,35 @@ using System.Xml;
 
 public class Tools 
 {
-    //读取关卡列表
-    public static List<FileInfo> GetLevelFiles()
-    {
-        string[] files = Directory.GetFiles(Consts.LevelDir, "*.xml");
+    ////读取关卡列表
+    //public static List<FileInfo> GetLevelFiles()
+    //{
+    //    string[] files = Directory.GetFiles(Consts.LevelDir, "*.xml");
 
-        List<FileInfo> list = new List<FileInfo>();
-        for (int i = 0; i < files.Length; i++)
-        {
-            FileInfo file = new FileInfo(files[i]);
-            list.Add(file);
-        }
-        return list;
-    }
+    //    List<FileInfo> list = new List<FileInfo>();
+    //    for (int i = 0; i < files.Length; i++)
+    //    {
+    //        FileInfo file = new FileInfo(files[i]);
+    //        list.Add(file);
+    //    }
+    //    return list;
+    //}
 
     //填充Level类数据
-    public static void FillLevel(string fileName, ref Level level)
+    public static void FillLevel(int count, ref Level level)
     {
-        FileInfo file = new FileInfo(fileName);
-        StreamReader sr = new StreamReader(file.OpenRead(), Encoding.UTF8);
+        TextAsset textAsset = (TextAsset)Resources.Load(Consts.LevelDir + "level" + count);
 
         XmlDocument doc = new XmlDocument();
-        doc.Load(sr);
+        doc.LoadXml(textAsset.text);
 
         level.Name = doc.SelectSingleNode("/Level/Name").InnerText;
         level.CardImage = doc.SelectSingleNode("/Level/CardImage").InnerText;
         level.Background = doc.SelectSingleNode("/Level/Background").InnerText;
         level.Road = doc.SelectSingleNode("/Level/Road").InnerText;
         level.InitScore = int.Parse(doc.SelectSingleNode("/Level/InitScore").InnerText);
-
+        //level.RowNum = int.Parse(doc.SelectSingleNode("/Level/RowNum").InnerText);
+        //level.ColNum = int.Parse(doc.SelectSingleNode("/Level/ColNum").InnerText);
         XmlNodeList nodes;
 
         nodes = doc.SelectNodes("/Level/Holder/Point");
@@ -63,14 +63,6 @@ public class Tools
             level.Path.Add(p);
         }
 
-        nodes = doc.SelectNodes("/Level/Luobo/Point");
-        XmlNode nodeLuobo = nodes[0];
-
-        level.Luobo = new Point(
-            int.Parse(nodeLuobo.Attributes["X"].Value),
-            int.Parse(nodeLuobo.Attributes["Y"].Value));
-
-
         nodes = doc.SelectNodes("/Level/Rounds/Round");
         for (int i = 0; i < nodes.Count; i++)
         {
@@ -84,8 +76,6 @@ public class Tools
             level.Rounds.Add(r);
         }
 
-        sr.Close();
-        sr.Dispose();
     }
 
     //保存关卡
@@ -158,6 +148,7 @@ public class Tools
             new Vector2(0.5f, 0.5f));
         render.sprite = sp;
     }
+
 
     public static IEnumerator LoadImage(string url, Image image)
     {

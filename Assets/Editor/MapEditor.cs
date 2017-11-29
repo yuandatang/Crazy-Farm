@@ -67,16 +67,12 @@ public class MapEditor : Editor
     {
         //清除状态
         Clear();
-
+        m_selectIndex = 0;
         //加载列表
-        m_files = Tools.GetLevelFiles();
 
         //默认加载第一个关卡
-        if (m_files.Count > 0)
-        {
-            m_selectIndex = 0;
-            LoadLevel();
-        }
+        m_selectIndex = 0;
+        LoadLevel();
     }
 
     void LoadLevel()
@@ -84,7 +80,7 @@ public class MapEditor : Editor
         FileInfo file = m_files[m_selectIndex];
 
         Level level = new Level();
-        Tools.FillLevel(file.FullName, ref level);
+        //Tools.FillLevel(file.FullName, ref level);
 
         Map.LoadLevel(level);
     }
